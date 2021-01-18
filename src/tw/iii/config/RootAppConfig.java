@@ -31,6 +31,7 @@ public class RootAppConfig {
 		JndiObjectFactoryBean factoryBean = new JndiObjectFactoryBean();
 		factoryBean.setJndiName("java:comp/env/connectSQLServerJdbc/OrderService");
 		factoryBean.setProxyInterface(DataSource.class);
+		factoryBean.setLookupOnStartup(false);
 		factoryBean.afterPropertiesSet();
 		return (DataSource) factoryBean.getObject();
 	}

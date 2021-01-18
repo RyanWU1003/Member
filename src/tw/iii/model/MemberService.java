@@ -4,52 +4,53 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-@Service
+@Service("MemberService")
 public class MemberService {
 	@Autowired
-	private MemberDAO mbrDao;
+	private MemberDAO mDao;
 	
 	public Member insert(Member mb) {
 		
-		return mbrDao.insert(mb);
+		return mDao.insert(mb);
 		
 	};
 	
 	public Member select(String Account) {
 		
-		return mbrDao.select(Account);
+		return mDao.select(Account);
 		
 	};
 	
 	public List<Member> selectAll(){
 		
-		return mbrDao.selectAll();
+		return mDao.selectAll();
 		
 	};
 	
 	public Member update(String Account,String Password) {
 		
-		return mbrDao.update(Account, Password);
+		return mDao.update(Account, Password);
 	};
 	
 	public Member updateAll(String Account,String userName,String email,String phone,String address,Date birthday,String gender) {
 		
-		return mbrDao.updateAll(Account, userName, email, phone, address, birthday, gender);
+		return mDao.updateAll(Account, userName, email, phone, address, birthday, gender);
 	};
 	
 	public boolean checkLogin(String Account,String Password) {
 		
-		return mbrDao.checkLogin(Account, Password);
+		return mDao.checkLogin(Account, Password);
 	};
 	
 	public boolean forgetpwd(String Account,String email) {
 		
-		return mbrDao.forgetpwd(Account, email);
+		return mDao.forgetpwd(Account, email);
 	};
 	
 	public boolean changepwd(String Password) {
 		
-		return mbrDao.changepwd(Password);
+		return mDao.changepwd(Password);
 	};
 }

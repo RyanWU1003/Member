@@ -3,7 +3,7 @@ package tw.iii.model;
 import java.util.Date;
 import java.util.List;
 
-public interface IMember {
+public interface IMemberDao {
 	public Member insert(Member mb);
 	public Member select(String Account);
 	public List<Member> selectAll();

@@ -10,24 +10,31 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 @Entity
-@Table(name = "member")
+@Table(name = "Member")
 @Component
 public class Member {
 	@Column(name = "ACCOUNT")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String account;
+	
 	@Column(name = "PASSWORD")
 	private String password;
+	
 	@Column(name = "USERNAME")
 	private String userName;
+	
 	@Column(name = "EMAIL")
 	private String email;
+	
 	@Column(name = "PHONE")
 	private String phone;
+	
 	@Column(name = "ADDRESS")
 	private String address;
+	
 	@Column(name = "BIRTHDAY")
 	private Date birthday;
+	
 	@Column(name = "GENDER")
 	private String gender;
 	

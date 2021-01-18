@@ -10,8 +10,8 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-@Repository("memberDao")
-public class MemberDAO implements IMember {
+@Repository("memberDAO")
+public class MemberDAO implements IMemberDao {
 	@Autowired
 	private SessionFactory sessionfactory;
 	
