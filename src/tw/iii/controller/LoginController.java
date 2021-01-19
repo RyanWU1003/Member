@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ import tw.iii.model.MemberService;
 @Controller
 public class LoginController {
 	@Autowired
+	@Qualifier("MemberService")
 	private MemberService mbrs;
 	@RequestMapping(path = "/login.controller",method = RequestMethod.POST)
 	public String loginAction(@RequestParam(name = "account") String account,@RequestParam(name = "password") String password,

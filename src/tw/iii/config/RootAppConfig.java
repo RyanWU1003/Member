@@ -33,7 +33,9 @@ public class RootAppConfig {
 		factoryBean.setProxyInterface(DataSource.class);
 		factoryBean.setLookupOnStartup(false);
 		factoryBean.afterPropertiesSet();
-		return (DataSource) factoryBean.getObject();
+		DataSource ds = (DataSource) factoryBean.getObject();
+		System.out.println("ds:"+ds);
+		return ds;
 	}
 	public Properties hibernateProperties() {
 		Properties hProperties = new Properties();
