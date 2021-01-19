@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 @Entity
 @Table(name = "Member")
@@ -31,7 +32,7 @@ public class Member {
 	
 	@Column(name = "ADDRESS")
 	private String address;
-	
+	@DateTimeFormat(pattern = "YYYY-MM-dd")
 	@Column(name = "BIRTHDAY")
 	private Date birthday;
 	

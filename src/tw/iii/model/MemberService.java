@@ -1,6 +1,7 @@
 package tw.iii.model;
 
-import java.util.Date;
+
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,4 +54,7 @@ public class MemberService {
 		
 		return mDao.changepwd(Password);
 	};
+	public boolean checkaccount(String Account) {
+		return mDao.checkAccount(Account);
+	}
 }

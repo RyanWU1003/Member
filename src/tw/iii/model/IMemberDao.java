@@ -1,6 +1,7 @@
 package tw.iii.model;
 
-import java.util.Date;
+
+import java.sql.Date;
 import java.util.List;
 
 public interface IMemberDao {
@@ -12,5 +13,6 @@ public interface IMemberDao {
 	public boolean checkLogin(String Account,String Password);
 	public boolean forgetpwd(String Account,String email);
 	public boolean changepwd(String Password);
+	public boolean checkAccount(String Account);
 	
 }

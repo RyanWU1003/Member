@@ -1,6 +1,7 @@
 package tw.iii.model;
 
-import java.util.Date;
+
+import java.sql.Date;
 import java.util.List;
 
 
@@ -43,7 +44,7 @@ public class MemberDAO implements IMemberDao {
 	@Override
 	public List<Member> selectAll() {
 		Session session = sessionfactory.getCurrentSession();
-		Query<Member> mb=session.createQuery("from member",Member.class);
+		Query<Member> mb=session.createQuery("from Mmember",Member.class);
 		return mb.list();
 	}
 
@@ -81,7 +82,7 @@ public class MemberDAO implements IMemberDao {
 	@Override
 	public boolean checkLogin(String Account, String Password) {
 		Session session = sessionfactory.getCurrentSession();
-		Query<Object> query = session.createQuery("from member where account=?1 and password=?2");
+		Query<Object> query = session.createQuery("from Member where account=?1 and password=?2");
 		query.setParameter(1, Account);
 		query.setParameter(2, Password);
 		return query.list().isEmpty()?false:true;
@@ -90,7 +91,7 @@ public class MemberDAO implements IMemberDao {
 	@Override
 	public boolean forgetpwd(String Account, String email) {
 		Session session = sessionfactory.getCurrentSession();
-		Query<Object> query = session.createQuery("from member where account=?1 and email=?2");
+		Query<Object> query = session.createQuery("from Member where account=?1 and email=?2");
 		query.setParameter(1, Account);
 		query.setParameter(2, email);
 		return query.list().isEmpty()?false:true;
@@ -99,8 +100,16 @@ public class MemberDAO implements IMemberDao {
 	@Override
 	public boolean changepwd(String Password) {
 		Session session = sessionfactory.getCurrentSession();
-		Query<Object> query = session.createQuery("from member where password=?1");
+		Query<Object> query = session.createQuery("from Member where password=?1");
 		query.setParameter(1, Password);
+		return query.list().isEmpty()?false:true;
+	}
+
+	@Override
+	public boolean checkAccount(String Account) {
+		Session session = sessionfactory.getCurrentSession();
+		Query<Object> query = session.createQuery("from Member where account=?1");
+		query.setParameter(1, Account);
 		return query.list().isEmpty()?false:true;
 	}
 

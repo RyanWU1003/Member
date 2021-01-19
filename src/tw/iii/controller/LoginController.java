@@ -19,7 +19,7 @@ import tw.iii.model.MemberService;
 @Controller
 public class LoginController {
 	@Autowired
-	@Qualifier("MemberService")
+//	@Qualifier("MemberService")
 	private MemberService mbrs;
 	@RequestMapping(path = "/login.controller",method = RequestMethod.POST)
 	public String loginAction(@RequestParam(name = "account") String account,@RequestParam(name = "password") String password,
@@ -40,7 +40,7 @@ public class LoginController {
 			HttpSession hSession = req.getSession();
 			hSession.setAttribute("isLogin", isLogin);
 			model.addAttribute("selection","all");
-			model.addAttribute("MemberList", mbrs.select(account));
+
 			return "member.jsp";
 		}
 		model.addAttribute("errors", errors);
