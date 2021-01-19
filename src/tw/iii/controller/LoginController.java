@@ -47,7 +47,7 @@ public class LoginController {
 		if(errors != null && !errors.isEmpty()) {
 			return "index.jsp";
 		}
-		errors.put("error", "輸入錯誤");
+		errors.put("error", "請確認帳號密碼是否正確");
 		return"index.jsp";
 	}
 }

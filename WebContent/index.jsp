@@ -15,17 +15,17 @@
 <form method="post" action="login.controller">
  <h2>Login</h2>
  			
-            <input type="text" name="account"  placeholder="Account" class="account" autocomplete="off" />
+            <input type="text" name="account"  placeholder="Account" class="account" autocomplete="off" />${errors.account}
             </br>
             </br>
-            <input type="password" name="password" placeholder="Password" class="password" />
+            <input type="password" name="password" placeholder="Password" class="password" />${errors.password}
             </br>
             </br>
             <input type="submit" id="btn-submit" value="submit"/><a href="register.jsp">註冊</a>
             </br>
             </br>
             <a href="forgetpwd.jsp">忘記密碼?</a>
-            <span id="warning">${err.msg}${err.userName}<br>${err.password}</span>
+            <span id="warning">${errors.error}<br></span>
 </form>
 </div>
 
