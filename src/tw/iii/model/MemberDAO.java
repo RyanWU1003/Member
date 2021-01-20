@@ -91,7 +91,7 @@ public class MemberDAO implements IMemberDao {
 	@Override
 	public boolean forgetpwd(String Account, String email) {
 		Session session = sessionfactory.getCurrentSession();
-		Query<Object> query = session.createQuery("from Member where account=?1 and email=?2");
+		Query<Object> query = session.createQuery("password from Member where account=?1 and email=?2");
 		query.setParameter(1, Account);
 		query.setParameter(2, email);
 		return query.list().isEmpty()?false:true;
