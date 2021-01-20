@@ -35,10 +35,30 @@ public class MemberDAO implements IMemberDao {
 	}
 
 	@Override
-	public Member select(String Account) {
+	public Member selecter(String Account) {
 		Session session = sessionfactory.getCurrentSession();
 		Member mbr = session.get(Member.class, Account);
 		return mbr;
+	}
+	
+
+	@Override
+	public List<Member> select(String Account) {
+		Session session = sessionfactory.getCurrentSession();
+		Query<Member> query = session.createQuery("account,userName,email,phone,address,birthday,gender from member where account=?1");
+		query.setParameter(1, Account);
+		return query.list();
+	}
+	
+	
+
+	@Override
+	public List<Member> selectpwd(String Account, String email) {
+		Session session = sessionfactory.getCurrentSession();
+		Query<Member> query = session.createQuery("password from Member where account=?1 and email=?2");
+		query.setParameter(1, Account);
+		query.setParameter(2, email);
+		return query.list();
 	}
 
 	@Override
@@ -91,7 +111,7 @@ public class MemberDAO implements IMemberDao {
 	@Override
 	public boolean forgetpwd(String Account, String email) {
 		Session session = sessionfactory.getCurrentSession();
-		Query<Object> query = session.createQuery("password from Member where account=?1 and email=?2");
+		Query<Object> query = session.createQuery("from Member where account=?1 and email=?2");
 		query.setParameter(1, Account);
 		query.setParameter(2, email);
 		return query.list().isEmpty()?false:true;

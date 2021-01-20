@@ -6,7 +6,9 @@ import java.util.List;
 
 public interface IMemberDao {
 	public Member insert(Member mb);
-	public Member select(String Account);
+	public Member selecter(String Account);
+	public List<Member> select(String Account);
+	public List<Member> selectpwd(String Account,String email);
 	public List<Member> selectAll();
 	public Member update(String Account,String Password);
 	public Member updateAll(String Account,String userName,String email,String phone,String address,Date birthday,String gender);

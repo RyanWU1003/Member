@@ -18,11 +18,23 @@ public class MemberService {
 		
 	};
 	
-	public Member select(String Account) {
+	public Member selecter(String Account) {
+		
+		return mDao.selecter(Account);
+		
+	};
+	
+	public List<Member> select(String Account){
 		
 		return mDao.select(Account);
 		
 	};
+	public List<Member> selectpwd(String Account,String email){
+		
+		return mDao.selectpwd(Account, email);
+		
+	};
+	
 	
 	public List<Member> selectAll(){
 		

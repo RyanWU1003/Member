@@ -1,6 +1,8 @@
 package tw.iii.controller;
 
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,7 +23,7 @@ public class RegisterController {
 	@RequestMapping(path = "/register.controller", method = RequestMethod.POST)
 	public String registerAction(@RequestParam(name = "account") String account,@RequestParam(name = "password")String password,@RequestParam(name = "configpwd") String configpwd
 			,@RequestParam(name = "username")String userName,@RequestParam(name = "email")String email,@RequestParam(name = "phone")String phone,@RequestParam(name = "address")String address
-			,@RequestParam(name = "birthday")Date birthday,@RequestParam(name = "gender")String gender,Model m) {
+			,@RequestParam(name = "birthday")String birthday,@RequestParam(name = "gender")String gender,Model m) throws ParseException {
 		Map<String, String>err = new HashMap<String, String>();
 		boolean isaccount = mbs.checkaccount(account);
 		Member mbean = new Member();
@@ -55,6 +57,9 @@ public class RegisterController {
 		if(address==null || address.length()==0) {
 			err.put("address", "請輸入地址");	
 		}
+		if(birthday == null || birthday.length()==0) {
+			err.put("birthday", "請輸入生日");
+		}
 		m.addAttribute("err",err);
 		if(err!=null&&!err.isEmpty()) {
 			return "register.jsp";
@@ -65,7 +70,9 @@ public class RegisterController {
 		mbean.setEmail(email);
 		mbean.setPhone(phone);
 		mbean.setAddress(address);
-		mbean.setBirthday(birthday);
+		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+		java.util.Date br = sdf1.parse(birthday);
+		mbean.setBirthday(br);
 		mbean.setGender(gender);
 		mbs.insert(mbean);
 		
