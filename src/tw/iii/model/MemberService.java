@@ -69,4 +69,9 @@ public class MemberService {
 	public boolean checkaccount(String Account) {
 		return mDao.checkAccount(Account);
 	}
+	
+	public List<Member> selectaccount(String Account) {
+		return mDao.selectaccount(Account);
+		
+	}
 }

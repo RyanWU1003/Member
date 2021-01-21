@@ -39,6 +39,7 @@ public class LoginController {
 		if(isLogin) {
 			HttpSession hSession = req.getSession();
 			hSession.setAttribute("isLogin", isLogin);
+			hSession.setAttribute("account", mbrs.selectaccount(account));
 			model.addAttribute("selection","all");
 
 			return "member.jsp";

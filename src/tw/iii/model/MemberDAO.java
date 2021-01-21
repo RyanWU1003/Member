@@ -45,7 +45,7 @@ public class MemberDAO implements IMemberDao {
 	@Override
 	public List<Member> select(String Account) {
 		Session session = sessionfactory.getCurrentSession();
-		Query<Member> query = session.createQuery("account,userName,email,phone,address,birthday,gender from member where account=?1");
+		Query<Member> query = session.createQuery("select account,userName,email,phone,address,birthday,gender from member where account=?1");
 		query.setParameter(1, Account);
 		return query.list();
 	}
@@ -132,5 +132,15 @@ public class MemberDAO implements IMemberDao {
 		query.setParameter(1, Account);
 		return query.list().isEmpty()?false:true;
 	}
+
+	@Override
+	public List<Member> selectaccount(String Account) {
+		Session session = sessionfactory.getCurrentSession();
+		Query<Member> query = session.createQuery("select account,userName from Member where account=?1",Member.class);
+		query.setParameter(1, Account);
+		return query.list();
+	}
+	
+	
 
 }
