@@ -14,7 +14,7 @@
 		<div>${member.account1 }</div>
 		<div>${member.username }</div>
 	</c:forEach> --%>
-	<h4>${account }</h4>
-	<h4>${username }</h4>
+<%-- 	<h4>${account }</h4>
+	<h4>${username }</h4> --%>
 </body>
 </html>

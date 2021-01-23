@@ -12,7 +12,9 @@
 </head>
 <body>
 <div class="container">
-<form method="post" action="login.controller">
+<c:url value="/login" var="loginUrl"/>
+<!-- <form method="post" action="login"> -->
+<form method="post" action="${loginUrl}">
  <h2>Login</h2>
  			
             <input type="text" name="account"  placeholder="Account" class="account" autocomplete="off" />${errors.account}
@@ -26,6 +28,7 @@
             </br>
             <a href="forgetpwd.jsp">忘記密碼?</a>
             <span id="warning">${errors.error}<br></span>
+            <a href="#">登出</a>
 </form>
 </div>
 

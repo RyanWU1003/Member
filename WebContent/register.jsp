@@ -78,7 +78,7 @@
 <div>性別:&nbsp;<input type="text" id="gender" name="gender" />${err.gender }</div>
 <br/> --%>
 <div>
-    <input type="submit" id="send" value="送出" />&nbsp;&nbsp;
+    <input type="submit" id="send" value="送出" />
 </div>
 
 </form>
