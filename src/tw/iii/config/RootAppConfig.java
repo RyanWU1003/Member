@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.jndi.JndiObjectFactoryBean;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
@@ -28,14 +29,20 @@ public class RootAppConfig {
 
 	@Bean
 	public DataSource dataSource() throws IllegalArgumentException, NamingException {
-		JndiObjectFactoryBean factoryBean = new JndiObjectFactoryBean();
-		factoryBean.setJndiName("java:comp/env/connectSQLServerJdbc/OrderService");
-		factoryBean.setProxyInterface(DataSource.class);
-		factoryBean.setLookupOnStartup(false);
-		factoryBean.afterPropertiesSet();
-		DataSource ds = (DataSource) factoryBean.getObject();
-		System.out.println("ds:"+ds);
-		return ds;
+//		JndiObjectFactoryBean factoryBean = new JndiObjectFactoryBean();
+//		factoryBean.setJndiName("java:comp/env/connectSQLServerJdbc/OrderService");
+//		factoryBean.setProxyInterface(DataSource.class);
+//		factoryBean.setLookupOnStartup(false);
+//		factoryBean.afterPropertiesSet();
+//		DataSource ds = (DataSource) factoryBean.getObject();
+//		System.out.println("ds:"+ds);
+//		return ds;
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		dataSource.setDriverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+		dataSource.setUrl("jdbc:sqlserver://localhost:1433;databaseName=Topic");
+		dataSource.setUsername("watcher");
+		dataSource.setPassword("P@ssw0rd");
+		return dataSource;
 	}
 	public Properties hibernateProperties() {
 		Properties hProperties = new Properties();

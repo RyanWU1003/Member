@@ -62,7 +62,7 @@ public class RegisterController {
 		}
 		m.addAttribute("err",err);
 		if(err!=null&&!err.isEmpty()) {
-			return "register.jsp";
+			return "register";
 		}
 		mbean.setAccount(account);
 		mbean.setPassword(password);
@@ -78,7 +78,7 @@ public class RegisterController {
 		
 		m.addAttribute("selection","all");
 			
-		return "success.jsp";
+		return "success";
 		
 		
 	}
