@@ -14,30 +14,25 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"tw.iii"})
+@ComponentScan(basePackages = { "tw.iii" })
 public class JavaMVCconfig implements WebMvcConfigurer {
 
 	@Override
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-		
+
 		configurer.enable();
 	}
-	
-	
-	
+
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/resources/**").addResourceLocations("/WEB-INF/resources/");
 	}
 
-
-
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
 		registry.addViewController("/login").setViewName("index");
+		registry.addViewController("/home").setViewName("home");
 	}
-
-
 
 	@Bean
 	public ViewResolver viewResolver() {
@@ -49,7 +44,5 @@ public class JavaMVCconfig implements WebMvcConfigurer {
 //		viewResolver.setOrder(2);
 		return viewResolver;
 	}
-	
-	
-	
+
 }

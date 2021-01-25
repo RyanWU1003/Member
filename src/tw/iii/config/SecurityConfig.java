@@ -16,8 +16,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-	@Autowired
-	private DataSource dataSource;
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -57,6 +55,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.withUser("admin").password(passwordEncoder().encode("admin")).roles("ADMIN")
 		.and()
 		.withUser("tom").password(passwordEncoder().encode("tom123")).roles("USER");
+//		userDetailsService()//要實做這個
 //		PasswordEncoder pwdEncoder = new BCryptPasswordEncoder();		//對後續設置密碼進行加密
 //		auth.jdbcAuthentication().dataSource(dataSource)
 //		.usersByUsernameQuery("select account,password from Member where account=?")

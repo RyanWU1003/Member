@@ -23,6 +23,4 @@ public class WebSecurityConfig extends AbstractSecurityWebApplicationInitializer
         characterEncodingFilter.addMappingForUrlPatterns(null, false, "/*");
 	}
 
-	
-	
 }
